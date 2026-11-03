@@ -62,6 +62,12 @@ aside {
   display: flex; flex-direction: column; min-height: 0;
 }
 main { overflow: auto; padding: 22px 28px 60px; min-width: 0; }
+.site-foot {
+  margin-top: 48px; padding-top: 14px; border-top: 1px solid var(--line-soft);
+  color: var(--muted); font-size: 14px; text-align: center;
+}
+.site-foot a { color: var(--gold-dim); }
+.site-foot a:hover { color: var(--gold); }
 
 /* ---------- sidebar ---------- */
 .search { padding: 12px; border-bottom: 1px solid var(--line-soft); }
@@ -325,7 +331,10 @@ main.ency {
     <div class="count" id="count"></div>
     <div class="list" id="list"></div>
   </aside>
-  <main id="main"></main>
+  <main id="main"><div id="view"></div>
+    <footer class="site-foot">Fan-made, not affiliated with TaleWorlds. Feedback or a mistake spotted?
+      <a href="mailto:antongeorgiev313@gmail.com?subject=Calradia%20Troops%20feedback">antongeorgiev313@gmail.com</a></footer>
+  </main>
 </div>
 
 <script>
@@ -857,7 +866,7 @@ function route() {
   }
   const fresh = cul !== shownCulture || !document.getElementById("detail");
   if (fresh) {
-    main.innerHTML = treesPage(cul);
+    document.getElementById("view").innerHTML = treesPage(cul);
     shownCulture = cul;
     scroller().scrollTop = 0;
     // a narrow screen shows the left edge of a wide tree; bring the first recruit into view instead
